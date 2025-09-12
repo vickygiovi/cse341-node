@@ -1,9 +1,42 @@
-### Obtener todos los contactos
-GET http://localhost:3000/contacts
-Content-Type: application/json
+### Get all contacts
+GET http://localhost:8080/contacts
+Accept: application/json
 
 ###
 
-### Obtener un contacto por ID
-GET http://localhost:3000/contacts/64f12cba2a1e5d23c0b8a7d1
+### Get single contact by ID
+GET http://localhost:8080/contacts/{id}
+Accept: application/json
+
+###
+
+### Create new contact
+POST http://localhost:8080/contacts
 Content-Type: application/json
+
+{
+  "firstName": "Giovanni",
+  "lastName": "Canavesi",
+  "email": "giovanni@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1990-05-20"
+}
+
+###
+
+### Update contact by ID (replace all fields)
+PUT http://localhost:8080/contacts/{id}
+Content-Type: application/json
+
+{
+  "firstName": "UpdatedName",
+  "lastName": "UpdatedLastName",
+  "email": "updated@example.com",
+  "favoriteColor": "Red",
+  "birthday": "1992-07-15"
+}
+
+###
+
+### Delete contact by ID
+DELETE http://localhost:8080/contacts/{id}
