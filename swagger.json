@@ -5,7 +5,7 @@
     "description": "A contacts API documentation",
     "version": "1.0.0"
   },
-  "host": "https://cse341-node-3ol4.onrender.com/",
+  "host": "cse341-node-3ol4.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
