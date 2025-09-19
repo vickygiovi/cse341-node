@@ -5,10 +5,10 @@
     "description": "A contacts API documentation",
     "version": "1.0.0"
   },
-  "host": "cse341-node-3ol4.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -231,7 +231,8 @@
                   "example": "090000000"
                 },
                 "ci": {
-                  "example": "12341234"
+                    "type": "string",
+                    "example": "12341234"
                 }
               }
             }
@@ -313,6 +314,7 @@
                   "example": "090000000"
                 },
                 "ci": {
+                  "type": "string",
                   "example": "12341234"
                 }
               }
