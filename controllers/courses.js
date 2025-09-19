@@ -4,7 +4,7 @@ const ObjectId = require("mongodb").ObjectId
 const getAll = async (req, res) => {
     // #swagger.tags = ['Courses']
     try {
-        const result = await mongodb.getDatabase().db("cse341-node").collection("courses").find();
+        const result = await mongodb.getDatabase().db("week03").collection("courses").find();
         const courses = await result.toArray(); // Se usa await para que la promesa se resuelva
 
         res.setHeader('Content-Type', 'application/json');
@@ -25,7 +25,7 @@ const getSingle = async (req, res) => {
         const courseId = new ObjectId(req.params.id);
         const result = await mongodb
             .getDatabase()
-            .db('cse341-node')
+            .db('week03')
             .collection('courses')
             .find({ _id: courseId });
         
@@ -45,7 +45,7 @@ const createCourse = async (req, res) => {
         coursecode: req.body.coursecode
     }
 
-    const response = await mongodb.getDatabase().db("cse341-node").collection("courses").insertOne(course)
+    const response = await mongodb.getDatabase().db("week03").collection("courses").insertOne(course)
 
     if (response.acknowledged) {
         res.status(201).json({id: response.insertedId})
@@ -63,7 +63,7 @@ const updateCourse = async (req, res) => {
         coursecode: req.body.coursecode
     }
 
-    const response = await mongodb.getDatabase().db("cse341-node").collection("courses").replaceOne({_id: courseId}, course)
+    const response = await mongodb.getDatabase().db("week03").collection("courses").replaceOne({_id: courseId}, course)
     
     if (response.modifiedCount > 0) {
         res.status(204).send()
@@ -75,7 +75,7 @@ const updateCourse = async (req, res) => {
 const deleteCourse = async (req, res) => {
     //#swagger.tags=['Courses']
     const courseId = new ObjectId(req.params.id)
-    const response = await mongodb.getDatabase().db("cse341-node").collection("courses").deleteOne({_id: courseId})
+    const response = await mongodb.getDatabase().db("week03").collection("courses").deleteOne({_id: courseId})
 
     if (response.deletedCount > 0) {
         res.status(204).send()

@@ -4,7 +4,7 @@ const ObjectId = require("mongodb").ObjectId
 const getAll = async (req, res) => {
   // #swagger.tags = ['Students']
   try {
-    const result = await mongodb.getDatabase().db('cse341-node').collection('students').find();
+    const result = await mongodb.getDatabase().db('week03').collection('students').find();
     const students = await result.toArray();
 
     res.setHeader('Content-Type', 'application/json');
@@ -24,7 +24,7 @@ const getSingle = async (req, res) => {
     const studentId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDatabase()
-      .db('cse341-node')
+      .db('week03')
       .collection('students')
       .find({ _id: studentId });
 
@@ -49,7 +49,7 @@ const createStudent = async (req, res) => {
         phonenumber: req.body.phonenumber
     }
 
-    const response = await mongodb.getDatabase().db("cse341-node").collection("students").insertOne(student)
+    const response = await mongodb.getDatabase().db("week03").collection("students").insertOne(student)
 
     if (response.acknowledged) {
         res.status(201).json({id: response.insertedId})
@@ -72,7 +72,7 @@ const updateStudent = async (req, res) => {
         phonenumber: req.body.phonenumber
     }
 
-    const response = await mongodb.getDatabase().db("cse341-node").collection("students").replaceOne({_id: studentId}, student)
+    const response = await mongodb.getDatabase().db("week03").collection("students").replaceOne({_id: studentId}, student)
     
     if (response.modifiedCount > 0) {
         res.status(204).send()
@@ -84,7 +84,7 @@ const updateStudent = async (req, res) => {
 const deleteStudent = async (req, res) => {
     //#swagger.tags=['Students']
     const studentId = new ObjectId(req.params.id)
-    const response = await mongodb.getDatabase().db("cse341-node").collection("students").deleteOne({_id: studentId})
+    const response = await mongodb.getDatabase().db("week03").collection("students").deleteOne({_id: studentId})
 
     if (response.deletedCount > 0) {
         res.status(204).send()
