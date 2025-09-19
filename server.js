@@ -10,6 +10,11 @@ const port = process.env.PORT || 3000
 app.use(bodyParser.json())
 app.use("/", require("./routes"))
 
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).json({ message: "Internal Server Error" });
+});
+
 mongodb.initDb((err) => {
     if (err) {
         console.log(err)
